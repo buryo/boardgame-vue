@@ -1,0 +1,169 @@
+@tailwind preflight;
+
+@tailwind components;
+
+option[default] {
+    display: none;
+}
+
+body {
+    font-family: Rubik;
+}
+
+a {
+    @apply no-underline;
+}
+
+.container{
+    padding: 0 15px 0 15px;
+}
+
+.header {
+    background: url(/media/img/bg.jpg);
+}
+
+.nav_links a{
+    @apply uppercase;
+    @apply text-white;
+    display: inline-grid;
+}
+
+.nav_links .active{
+    border-radius: 20px;
+    border: solid;
+    border-color: #a39768;
+}
+
+.site-heading {
+    padding: 220px;
+}
+
+.oval {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: auto;
+    margin-top: -300px;
+    border-radius: 100%;
+    background-color: #d8d8d8;
+}
+
+
+.highscore{
+    //height: 600px;
+    //max-height: 600px;
+}
+
+.open{
+    width:  300px !important;
+}
+
+.side-menu{
+    width: 0;
+    transition: 0.3s;
+}
+
+.side-menu a{
+    transition: 0.2s;
+}
+
+.game-form{
+    box-shadow: 0 3px 10px 0 #a39768;
+}
+
+.game-form input::placeholder{
+    opacity: 1 !important;
+}
+
+.game-form .fa-sort-down{
+    position: absolute;
+    top: 20%;
+    left: 92%;
+    @apply text-grey-dark;
+}
+
+// input with label
+label {
+    position: absolute;
+    top: 14px;
+    color: RGBA(55, 73, 87, 0.8);
+    -webkit-transform-origin: left;
+    -ms-transform-origin: left;
+    transform-origin: left;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+input:focus ~ label {
+    color: RGBA(254, 253, 255, 1.00);
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    top: 0;
+    letter-spacing: 2.5px;
+    -webkit-transform: translate(0, -13px) scale(0.7, 0.7);
+    -ms-transform: translate(0, -13px) scale(0.7, 0.7);
+    transform: translate(0, -13px) scale(0.7, 0.7);
+}
+
+.fieldset {
+    position: relative;
+}
+
+.fa-search{
+    position: relative;
+    top: 0px;
+}
+
+.players-table thead th{
+    @apply pb-3;
+}
+
+.players-table td{
+    @apply py-3;
+}
+
+.player-title{
+    margin-bottom: -32px;
+}
+
+.player-title div{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #827c60, #a19666);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.dice-bg{
+    background: url(/media/img/dice.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    max-height: 650px;
+    margin-top: -16%;
+    margin-left: -2%;
+    border-bottom-right-radius: 50% 25%;
+    border-bottom-left-radius: 50% 25%;
+    width: 104%;
+    box-shadow: 0 8px 4px 0 #a39768;
+}
+
+.footer{
+    @apply text-footer-text;
+    background-color: #191d21;
+    margin-top: -150px;
+}
+
+
+.footer-2 ul li, .footer-3 ul li{
+    @apply py-4;
+    @apply text-lg;
+}
+
+// end input with label
+
+@tailwind utilities;
