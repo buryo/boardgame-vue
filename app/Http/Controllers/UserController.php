@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UsersResource;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return new UsersResource(User::all());
     }
 
     /**
@@ -80,5 +82,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function searchPlayers(Request $request)
+    {
+        if ($request->ajax()){
+            return new UsersResource(User::take(10)->where('nickname', 'like', '%' . $request->input('nickname') . '%')->get());
+        }
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Http\Resources\GameResource;
+use App\Http\Resources\GamesResource;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -14,7 +16,9 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+//        dd( Game::all());
+
+        return new GamesResource(Game::paginate(10));
     }
 
     /**
@@ -41,21 +45,21 @@ class GameController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Game  $game
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Game $game)
     {
-        //
+        return new GameResource($game);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Game  $game
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Game $game)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +68,10 @@ class GameController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Game  $game
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Game $game)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +79,10 @@ class GameController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Game  $game
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Game $game)
+    public function destroy($id)
     {
         //
     }

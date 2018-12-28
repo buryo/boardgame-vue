@@ -8,7 +8,7 @@ class Battle extends Model
 {
 
 
-    public function battle()
+    public function game()
     {
         return $this->belongsTo(Game::class);
     }

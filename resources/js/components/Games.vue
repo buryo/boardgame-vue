@@ -8,20 +8,17 @@
             <table class="md:w-full min-w-650 players-table">
                 <thead>
                 <tr class="text-left border-b-2 border-grey pb-16">
-                    <th class="w-1/3 pl-4">Nickname</th>
-                    <th class="w-1/4">Points</th>
-                    <th class="w-1/2">Member Since</th>
+                    <th class="w-1/3 pl-4">Game</th>
+                    <th class="w-1/3">Description</th>
+                    <th class="w-1/3">min. players</th>
+                    <th class="w-1/3">max. players</th>
                 </tr>
                 </thead>
-                <tr>
-                    <td class="pl-4">Goldenboy010</td>
-                    <td>161</td>
-                    <td>02-12-2017</td>
-                </tr>
-                <tr>
-                    <td class="pl-4">Crispy_</td>
-                    <td>91</td>
-                    <td>18-09-2017</td>
+                <tr v-for="game in games">
+                    <td class="pl-4">{{ game.attributes.name }}</td>
+                    <td>{{ game.attributes.description }}</td>
+                    <td>{{ game.attributes.minPlayers }}</td>
+                    <td>{{ game.attributes.maxPlayers }}</td>
                 </tr>
             </table>
         </div>
@@ -37,8 +34,13 @@
         data(){
             return{
                 topTitle: "999games",
-                title: "Games"
+                title: "Games",
+                games: [],
             }
+        },
+        mounted() {
+            axios.get('/api/games')
+                .then( res => this.games = res.data.data )
         }
     }
 </script>
