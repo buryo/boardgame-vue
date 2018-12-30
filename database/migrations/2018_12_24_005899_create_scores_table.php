@@ -15,11 +15,11 @@ class CreateScoresTable extends Migration
     {
         Schema::create('scores', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
             $table->bigInteger('score');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('battle_id');
             $table->timestamps();
+            $table->primary(['user_id', 'battle_id']);
         });
 
         Schema::table('scores', function($table) {

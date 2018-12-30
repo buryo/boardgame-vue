@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
+use App\Http\Resources\UsersPoints;
 use App\Http\Resources\UsersResource;
 use App\User;
 use Illuminate\Http\Request;
@@ -15,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return new UsersResource(User::all());
+        return new UsersPoints(User::getUserPoints());
     }
 
     /**
@@ -84,10 +86,44 @@ class UserController extends Controller
         //
     }
 
-    public function searchPlayers(Request $request)
+    public function searchPlayersByName(Request $request)
     {
-        if ($request->ajax()){
-            return new UsersResource(User::take(10)->where('nickname', 'like', '%' . $request->input('nickname') . '%')->get());
+        if ($request->ajax()) {
+//          Game and nickname isset
+            if ($request->input('nickname') && $request->input('game')) {
+//              Game is not set to All games but Nickname is filled
+                if ($request->input('game') != 'all-games'){
+                    return new UsersPoints(User::getUserPoints($request->input('game'), $request->input('nickname')));
+//                    return new UsersPoints);
+                }
+//              Game isset to all games
+                else{
+                    return new UsersPoints(User::getUserPoints('', $request->input('nickname')));
+                }
+            }
+//          Game is all, nickname isset
+            else if ($request->input('nickname')){
+                return new UsersPoints(User::getUserPoints('' ,$request->input('nickname')));
+            }
+//          Only game isset
+            else if ($request->input('game')){
+//              Game isset not set to All games
+                if ($request->input('game') != 'all-games'){
+                    return new UsersPoints(User::getUserPoints($request->input('game')));
+//                    return new UsersPoints);
+                }
+//              Game isset to all games
+                else{
+                    return new UsersPoints(User::getUserPoints());
+                }
+            }
+//          Everything is empty, show all games all players
+            else{
+                return new UsersPoints(User::getUserPoints());
+            }
         }
+
+
+//        return User::getUserPoints($game);
     }
 }

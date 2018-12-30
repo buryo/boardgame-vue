@@ -16,9 +16,10 @@ class CreateBattlePlayerTable extends Migration {
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->unsignedInteger('battle_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('battle_id')->unique();
+            $table->unsignedInteger('user_id')->unique();
             $table->timestamps();
+            $table->unique(['battle_id', 'user_id']);
         });
 
         Schema::table('battle_player', function($table) {

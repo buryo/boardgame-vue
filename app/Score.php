@@ -11,8 +11,8 @@ class Score extends Model
         return $this->belongsTo(Battle::class);
     }
 
-    public function player()
+    public function user()
     {
-        return $this->belongsTo(Player::class);
+        return $this->belongsTo(User::class);
     }
 }

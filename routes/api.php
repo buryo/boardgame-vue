@@ -18,5 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('/games', 'GameController');
+
 Route::get('/users', 'UserController@index');
-Route::post('/players', 'UserController@searchPlayers')->name('searchPlayers');
+Route::post('/players/search-name', 'UserController@searchPlayersByName')->name('searchPlayersByName');
+Route::post('/players/search-game', 'UserController@searchPlayersByGame')->name('searchPlayersByGame');
+

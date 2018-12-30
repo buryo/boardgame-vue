@@ -18,9 +18,6 @@
                     <router-link to="/battles" class="tracking-normal md:tracking-nav-a md:px-2 px-3 py-2">
                         Battles
                     </router-link>
-                    <router-link to="/scores" class="tracking-normal md:tracking-nav-a md:px-2 px-3 py-2">
-                        Scores
-                    </router-link>
                     <a class="tracking-normal md:tracking-nav-a md:px-2 px-3 py-2" href="/language">language</a>
                     <a class="tracking-normal md:tracking-nav-a md:px-2 px-3 py-2" href="/logout">logout</a>
                 </div>
@@ -40,7 +37,6 @@
                         <a class="block text-white hover:text-home px-8 py-2" href="#">Players</a>
                         <a class="block text-white hover:text-home px-8 py-2" href="#">Games</a>
                         <a class="block text-white hover:text-home px-8 py-2" href="#">Battles</a>
-                        <a class="block text-white hover:text-home px-8 py-2" href="#">Scores</a>
                         <a class="block text-white hover:text-home px-8 py-2" href="#">Language</a>
                         <a class="block text-white hover:text-home px-8 py-2" href="#">Logout</a>
                     </div>

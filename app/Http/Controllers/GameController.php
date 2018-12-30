@@ -86,4 +86,9 @@ class GameController extends Controller
     {
         //
     }
+
+    public function getGameById(Game $game)
+    {
+//        return $game;
+    }
 }
